@@ -20,7 +20,9 @@ const UserComponent = () => {
   };
 
   const getUserDetails = async () => {
-    const full_uri = `http://localhost:5126/api/v1/user/${userId}`;
+    const base_uri = process.env.REACT_APP_API_URI;
+    const full_uri = `${base_uri}/api/v1/user/${userId}`;
+    
     try {
       const response = await axios.get(full_uri);
       setUser(response.data);
@@ -39,7 +41,7 @@ const UserComponent = () => {
           User Details
         </Typography>
         <TextField
-          label="Enter User ID"
+          label="Enter User Name or Id"
           variant="outlined"
           fullWidth
           value={userId}
