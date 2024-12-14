@@ -14,7 +14,8 @@ const SearchComponent = () => {
   const [error, setError] = useState('');
 
   const searchUsers = async () => {
-    const full_uri = 'http://localhost:5126/api/v1/search';
+    const base_uri = process.env.REACT_APP_API_URI
+    const full_uri = `${base_uri}/api/v1/search`;
     try {
       const response = await axios.get(full_uri, {
         params: { sport, day, time }
